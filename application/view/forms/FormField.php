@@ -10,7 +10,7 @@ use application\view\widgets\protocol\Renderable as Editable;
  * @author coreygelbaugh
  * @version 1.0
  */
-class FormFieldWidget extends CDView implements Renderable,Editable{
+class FormField extends CDView implements Renderable,Editable{
     
     private $fieldType;
     private $fieldLabel;
