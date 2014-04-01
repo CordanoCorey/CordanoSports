@@ -1,0 +1,25 @@
+<?php
+
+namespace application\professor\library;
+
+/**
+ * Description of CDDictionary
+ *
+ * @author coreygelbaugh
+ * @version 1.0
+ */
+class TeamxTeamDictionary {
+    
+    private $team1;
+    private $team2; 
+    
+    public function construct($team1,$team2){
+        $this->team1 = $team1;
+        $this->team2 = $team2;
+    }
+    
+    public function playoffTiebreaker(){
+        $query="";
+        return $query;
+    }
+}

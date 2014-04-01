@@ -1,0 +1,16 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 29, 2014, 11:40:59 PM
+    Author     : coreygelbaugh
+*/
+
+div#upload_box_wrapper{width:300px;text-align:center;border:3px solid lightblue;float: left;font-family: verdana; font-size: 12px;padding: 5px 5px 5px 5px;background:url(./images/background.jpg) no-repeat; color: white;}
+div#upload_box_wrapper #upload_title_text{text-align:left;width: 100%;display: block;border: 0px solid green; margin-bottom: 5px;}
+div#upload_box_wrapper #FileUploadDiv{display: block;width: 98%;border: 0px solid green; text-align: left;padding: 0px 0px 0px 0px;}
+div#upload_box_wrapper p.add-new-upload-box{float: left;width: 100%;text-align: right;}
+div#upload_box_wrapper a.add-new-upload-link{font-weight: bold;font-size: 13px;padding-right: 3px;text-decoration: none; color: yellow;}
+div#upload_box_wrapper .upload-button{border: 0px solid lightgreen;height:30px; width:120px;cursor: pointer;background:url(../images/upload_button.png) no-repeat center left; color: white;}

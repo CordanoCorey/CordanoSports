@@ -1,0 +1,32 @@
+
+[
+    {      
+        "name": "basketball",
+        "abbrev":"bsk"
+    },
+    
+    {      
+        "name": "baseball",
+        "abbrev":"bsb"
+    },
+    
+    {      
+        "name": "football",
+        "abbrev":"ftb"
+    },
+    
+    {      
+        "name": "hockey",
+        "abbrev":"hcky"
+    },
+    
+    {      
+        "name": "basketball",
+        "abbrev":"bsk"
+    },
+    
+    {      
+        "name": "wrestling",
+        "abbrev":"wrstl"
+    }
+]

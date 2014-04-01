@@ -1,0 +1,37 @@
+[
+    {      
+        "pageName": "main",
+        "sections":[],
+        "topics":[],
+        "layout": "templates/layouts/main.php",
+        "background": "assets/images/backgrounds/bg-index.jpg",
+        "defaultTitle": "Ask Fanbot",
+        "featuredApps": [],
+        "navMenu": [],
+        "navMenuLinks":[],
+        "viewModel": "application\\view\\model\\main\\FanbotView",
+        "containerView": "application\\view\\PageView"
+
+    },
+    {
+        "pageName": "home",
+        "layout": "templates/layouts/home.php",
+        "background": "assets/images/backgrounds/bg-signed-in.jpg",
+        "featuredApps": ["Hype Machine","Game Day","Player Developer","Team Builder","League Manager"],
+        "navMenu": ["Hype","Leagues","Teams","Players","Games"],
+        "navMenuLinks":[],
+        "viewModel": "application\\view\\model\\main\\FanbotView",
+        "containerView": "application\\view\\PageView"
+    },
+    {
+        "pageName": "player",
+        "layout": "templates/layouts/home.php",
+        "background": "assets/images/backgrounds/bg-signed-in.jpg",
+        "featuredApps": ["Player Developer"],
+        "navMenu": ["Player","Games","Analytics","Showcase","Trophy Room"],
+        "navMenuLinks":[],
+        "viewModel": "application\\view\\model\\players\\player\\PlayerView",
+        "containerView": "application\\view\\PageView"
+    }
+    
+]
