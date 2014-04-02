@@ -50,26 +50,45 @@ class PlayerView implements Indexable,Pageable {
     public function __construct($player,$collections=[]){
         $this->player = $player;
     }
-    
     /*
      * 
      */
-    public function setLayout(){
-         return "templates/layouts/home.php";
+    public function getBackground(){
+        return "bg-signed-in.jpg";
     }
     /*
      * 
      */
-    public function setBackground(){
-        $_SESSION["background"] = "bg-signed-in.jpg";
+    public function getTitle(){
+        return "Cordano :: Believe the Hype";
     }
     /*
      * 
      */
-    public function loadInitialView(){
+    public function getLayout(){
+        return "player-layout.php";
+    }
+    /*
+     * 
+     */
+    public function loadView(){
         return new PageView($this,"templates/views/containers/player-page.php");
     }
-    
+    /*
+     * 
+     */
+    public function deriveFields(){
+        
+    }
+    /*
+     * 
+     */
+    public function defineActions(){
+        
+    }
+    /*
+     * 
+     */
     public function loadCollection($collection=""){
         
         if($collection and in_array($collection,$this->featureContent)){

@@ -16,7 +16,7 @@
     $delegate = new CDDelegate();
     
     //format client request
-    $delegate->inputRequest($delegate->sanitize($_GET),$delegate->sanitize($_POST));
+    $delegate->inputRequest();
     
     //load correct controller
     $controller = $delegate->routeRequest();
@@ -32,4 +32,3 @@
     
     //send response to client
     $controller->output();
-?>

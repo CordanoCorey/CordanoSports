@@ -34,18 +34,9 @@
     Class CDController
     {
         /*
-         * @param string
-         */
-        public $response;
-        
-        /*
          * @param CDDelegate
          */
         public $delegate;
-        /*
-         * @param DrCordano
-         */
-        protected $professor;
         /*
          * @param User|AccountManager
          */
@@ -62,10 +53,6 @@
          * @param ClientRequest
          */
         protected $request;
-        /*
-         * @param int Element ID to which the request was directed
-         */
-        protected $idElement;
                 
                 
         /*
@@ -75,7 +62,6 @@
         {
             $this->request = $request;
             $this->delegate = $delegate;
-            $this->professor = new DrCordano($this->request);
             
             if($this->request->idUser){
                 $this->user = new User($this->request->idUser);
@@ -91,7 +77,7 @@
                 
                 //set request parameters
                 $action = $this->request->action;
-                $args = $this->request->getArgs();
+                $args = $this->request->args;
                 
                 //check whether this is a valid request action
                 if(method_exists($this,$action)){ 
@@ -140,11 +126,13 @@
          */
         public function output(){
             
-            //include the page layout for the current Indexable view model 
             if($this->appState instanceof Indexable){
+                
+                //include the page layout for the current Indexable view model 
                 $this->index($this->request->format);
             }
-            else{ //echo the current app state
+            else{ 
+                //echo the current app state
                 $this->deploy($this->request->format);
             }
         }
@@ -154,17 +142,22 @@
          */
         protected function index($format="html"){
             
-            //ask for layout script
-            $layout = $this->appState->setLayout();
+            //set page background 
+            $_SESSION["background"] = "assets/images/backgrounds/".$this->appState->getBackground();
             
-            //ask for layout background 
-            $this->appState->setBackground();
+            //set page title 
+            $_SESSION["title"] = $this->appState->getTitle();
             
             //Load initial view which in turn loads all its subviews
             $view = $this->appState->loadView();
             
-            //render the page
-            include $layout;
+            if($format == "json"){
+                json_encode($this->appState);
+            }
+            else{
+                //include the page layout
+                include "templates/layouts/".$this->appState->getLayout();
+            }
             
             //prevent further echo statements
             exit;
@@ -175,15 +168,13 @@
          */
         protected function deploy($format="html"){
             
-            //store app state details in session to retrieve upon request
-            $_SESSION["sender"] = $this->appState->registerSender();
-            
             //send json response back to client
             if($format == "json"){
                 echo json_encode($this->appState);
             }
             else{
-                
+                $view = $this->appState->loadView();
+                $view->render();
             }
         }
         
@@ -203,6 +194,7 @@
          * is a registered sender. Otherwise, it does not update the domain state.
          */
         protected function reload(){
+            
             $args = $this->request->args;
             $lastUpdateTime = (isset($args["updateTime"]))? $args["updateTime"]:NULL;
             $sender = (isset($args["sender"]))? $args["sender"]:NULL;
@@ -215,12 +207,9 @@
         }
         
         protected function search(){
-            $expectedArgs = ['topic','info','inputString'];
-            $args = $this->delegate->filterArgs($expectedArgs);
             
-            $collection = isset($this->requestArgs["collection"])? $this->requestArgs["collection"]:NULL;
-            $searchString=isset($this->requestArgs["searchString"])? $this->requestArgs["searchString"]:"";
-            $info=isset($this->requestArgs["info"])? $this->requestArgs["info"]:NULL;
+            $expectedArgs = ['topic','info','inputString'];
+            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
             
             $this->professor->search($collection,$searchString,$info);
         }
@@ -233,10 +222,12 @@
          * 
          */
         protected function promptUser(){
+            
             $this->hypeMachine->promptUser();
         }
         
         protected function getAnswer($args=[]){
+            
             $searchString=isset($args["searchString"])? $args["searchString"]:"";
             $info=isset($args["info"])? $args["info"]:NULL;
             
@@ -244,6 +235,7 @@
         }
         
         protected function postLogin($args=[]){
+            
             $userName=isset($args["userName"])? $args["userName"]:"";
             $password=isset($args["password"])? $args["password"]:NULL;
             
@@ -251,18 +243,73 @@
         }
         
         
-        private function create($args=[]){
+        private function createUser($args=[]){
+            
             $userName=isset($args["userName"])? $args["userName"]:"";
             $password=isset($args["password"])? $args["password"]:NULL;
             $email=$password=isset($args["password"])? $args["password"]:NULL;
             
         }
-        
         /*
          * 
          */
-        public function filterArgs($expectedArgs=[],$validate=FALSE){
-            $filteredArray = array_intersect_key($this->request->args,$expectedArgs);
-            return $filteredArray;
+        public function followUser(){
+            
+            $expectedArgs = ['idHype'];
+            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
+            
+            $this->user->favorite($args["idUser"]);
+        }
+        /*
+         * 
+         */
+        public function followTopic(){
+            
+            $expectedArgs = ['idTopic'];
+            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
+            
+            $this->user->favorite($args["idTopic"]);
+        }
+        /*
+         * 
+         */
+        public function favoriteHype(){
+            
+            $expectedArgs = ['idHype','info','inputString'];
+            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
+            
+            $this->user->favorite($args["idHype"]);
+        }
+        
+        public function updateMyFandom(){
+            
+            $expectedArgs=['sports','leagues','teams','players','statusChange'];
+            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
+            
+            $this->accountManager->updateMyFandom();
+        }
+        
+        public function updateMyFantasy(){
+            
+            $expectedArgs=['sports','leagues','teams','players','statusChange'];
+            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
+            
+            $this->accountManager->updateMyFantasy();
+        }
+        
+        public function updateMyLifestyle(){
+            
+            $expectedArgs=['hobbies','statusChange'];
+            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
+            
+            $this->accountManager->updateMyLifestyle();
+        }
+        
+        public function validateUserInput(){
+            
+            $expectedArgs = ['inputField','inputValue'];
+            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
+            
+            $this->accountManager->validate($args["inputField"],$args["inputValue"]);
         }
     }

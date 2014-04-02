@@ -1,9 +1,10 @@
 <?php
     namespace application\delegate\input;
+    use application\controller\request\UserRequest as UserRequest;
     
     /*
-     * The Router class takes a get request and a post request, instantiates a new CDRequest object, 
-     * then loads the appropriate controller giving the CDRequest as an argument.
+     * The Router class takes a get request and a post request, instantiates a new UserRequest object, 
+     * then loads the appropriate controller giving the UserRequest as an argument.
      * 
      * @package delegate
      * @version 1.0
@@ -18,12 +19,34 @@
          * @param ClientRequest
          */
         private $request;
+        /*
+         * @param string
+         */
+        private $requestUri;
+        /*
+         * @param array
+         */
+        private $pathInfo;
+        
+        /*
+         * 
+         */
+        public function __construct($requestUri="",$pathInfo=[]){
+            $this->requestUri = $requestUri;
+            $this->pathInfo = $pathInfo;
+            $this->setRequestController();
+        }
+        /*
+         * 
+         * 
+         * @return UserRequest User request object formatted to controller's specifications
+         */
+        public function inputRequest($getRequest,$postRequest=NULL,$file=NULL){
 
-        public function __construct($getRequest,$postRequest=NULL)
-        {
             if($getRequest["controller"]){
-                $this->destinationController = ucfirst($getRequest["controller"])."Controller";
+                $this->reController = ucfirst($getRequest["controller"])."Controller";
             }
+
             $this->request = new ClientRequest($getRequest,$postRequest);
         }
        /*
@@ -31,15 +54,48 @@
         * 
         * @return CDController
         */
-       public function routeRequest()
-       {
+        public function routeRequest()
+        {
+             return new $this->requestController($this->request);
+        }
+        
+        /*
+         * Parse the request url string.
+         * 
+         * @return array
+         */
+        public function getUrlElements(){
+            $urlElements = explode('/', $this->requestUri);
+            return $urlElements;
+        }
+        
+        /*
+         * Set the name of the controller responsible for handling this request.
+         */
+        public function setRequestController(){
+            //set namespace for controllers
             $namespace="application\\controller\\";
-            $this->requestController=$this->request->getController();
-            $controller=$namespace.$this->requestController;
-            return new $controller($this->request);
-       }
-       
-       function get_client_language($availableLanguages, $default='en'){
+            
+            //find the name of the controller in the url
+            $urlElements = $this->getUrlElements();
+            if(isset($urlElements[0])){
+                $controllerName = $urlElements[0];
+            }
+            else{
+                $controllerName = "CDController";
+            }
+            
+            //set the complete controller namespace name
+            $this->requestController = $namespace.$controllerName;
+            
+        }
+        
+        public function getUserAgent(){
+            
+        }
+        
+        
+        public function get_client_language($availableLanguages, $default='en'){
             if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
                     $langs=explode(',',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
 

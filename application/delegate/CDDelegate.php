@@ -1,11 +1,9 @@
 <?php
     namespace application\delegate;
-    use application\delegate\input\Router as Router;
-    use application\delegate\session\Factory as Factory;
-    use application\delegate\output\Dispatcher as Dispatcher;
     
     /*
-     * The app delegate class handles interactions with other networks.
+     * The app delegate class delegates tasks to whichever of its contained classes
+     * is built to handle requests of that type. 
      * 
      * @package delegate
      * @version 1.0
@@ -14,88 +12,49 @@
     Class CDDelegate
     {
         /*
-         * @param Router
+         * @param SecurityGuard Use security guard to sanitize user input.
+         */
+        private $securityGuard;
+        /*
+         * @param Router Use router to build UserRequest object and route request to correct controller.
          */
         private $router;
         /*
-         * @param Dispatcher
-         */
-        private $dispatcher;
-        /*
-         * @param Factory
+         * @param Factory Use factory to access classes that aren't necessarily utilizes on every request.
          */
         public $factory;
         
         public function __construct(){
+            
+            $this->securityGuard = new SecurityGuard();
+            
+            
+            $get = $this->securityGuard->sanitize($_GET);
+            $post = $this->securityGuard->sanitize($_GET);
+            $file = $this->securityGuard->sanitize($_FILE);
+            
+            $requestUri = $this->securityGuard->sanitize($_SERVER['REQUEST_URI']);
+            $pathInfo = $this->securityGuard->sanitize($_SERVER['PATH_INFO']);
+            
+            $this->router=new Router($requestUri,$pathInfo);
+            $this->router->inputRequest($get,$post,$file);
+            
+            //load the Cordano factory
             $this->factory=new Factory();
         }
         
-        public function inputRequest($get,$post){
-            $this->router=new Router($get,$post);
-        }
-        
-        public function outputRequest($get,$post){
-            $this->dispatcher=new Dispatcher();
-        }
-        
-        public function __call($name,$arguments=NULL){
+        public function __call($name,$args=NULL){
             if(method_exists($this->router,$name)){
-                return call_user_func_array([$this->router,$name],$arguments);
+                return call_user_func_array([$this->router,$name],$args);
             }
-            elseif(method_exists($this->dispatcher,$name)){
-                return all_user_func_array([$this->dispatcher,$name],$arguments=NULL);
+            elseif(method_exists($this->securityGuard,$name)){
+                return all_user_func_array([$this->securityGuard,$name],$args=NULL);
             }
-        }
-        
-        function cleanInput($input) {
-
-            $search = array(
-              '@<script[^>]*?>.*?</script>@si',   // Strip out javascript
-              '@<[\/\!]*?[^<>]*?>@si',            // Strip out HTML tags
-              '@<style[^>]*?>.*?</style>@siU',    // Strip style tags properly
-              '@<![\s\S]*?--[ \t\n\r]*>@'         // Strip multi-line comments
-            );
-
-              $output = preg_replace($search, '', $input);
-              return $output;
-        }
-  
-        function sanitize($input) {
-            
-            if (is_array($input)) {
-                foreach($input as $var=>$val) {
-                    $output[$var] = sanitize($val);
-                }
+            elseif(method_exists($this->factory,$name)){
+                return all_user_func_array([$this->securityGuard,$name],$args=NULL);
             }
-            else {
-                if (get_magic_quotes_gpc()) {
-                    $input = stripslashes($input);
-                }
-                $input  = cleanInput($input);
-                $output = mysql_real_escape_string($input);
+            else{
+                return FALSE;
             }
-            return $output;
-        }
-        
-        function getRemoteIPAddress() {
-            $ip = $_SERVER['REMOTE_ADDR'];
-            return $ip;
-        }
-        
-        function getRealIPAddr()
-        {
-            if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
-            {
-                $ip=$_SERVER['HTTP_CLIENT_IP'];
-            }
-            elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
-            {
-                $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
-            }
-            else
-            {
-                $ip=$_SERVER['REMOTE_ADDR'];
-            }
-            return $ip;
         }
     }

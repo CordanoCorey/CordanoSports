@@ -8,6 +8,7 @@
      * @author coreygelbaugh
      */
      Class UserRequest{
+         
         private $idUser;
         private $idTopic;
         private $idLeague;
@@ -46,7 +47,7 @@
         public $requestType;
         public $responseType;
         
-        public function __construct($getRequest=[],$postRequest=[],$userAgent=NULL){
+        public function __construct($getRequest=[],$postRequest=[]){
             foreach($getRequest as $key=>$value){ 
                 if(property_exists(get_class($this),$key)){
                     $this->$key=$value;
@@ -72,9 +73,7 @@
                 $this->format = "json";
             }
         }
-        public function getPathInfo(){
-            $urlElements = explode('/', $_SERVER['PATH_INFO']);
-        }
+        
         
         /*
         * Checks whether request is received via ajax call.
@@ -91,7 +90,15 @@
                 return false; 
             } 
         }
-        
+        /*
+         * 
+         */
+        public function setUserAgent($userAgent){
+            $this->userAgent = $userAgent;
+        }
+        /*
+         * 
+         */
         public function isMobile(){
             return FALSE;
         }
@@ -100,7 +107,9 @@
             return ($this->idUser)? TRUE:FALSE;
         }
         
-        
+        public function setRequestMethod(){
+            
+        }
         
         public function getArgs(){
            return $this->args;
@@ -108,13 +117,5 @@
         
         public function getFormat(){
             return ($this->isMobile())? "json":$this->format;
-        }
-        
-        public function getSender(){
-            
-        }
-        
-        public function getStyle(){
-            
         }
      }

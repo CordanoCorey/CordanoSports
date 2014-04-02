@@ -3,18 +3,24 @@
 namespace application\delegate;
 
 /**
- * Description of SecurityGuard
+ * The security guard protects against malicious user input.
  *
  * @package delegate
  * @author coreygelbaugh
  * @version 1.0
  */
 class SecurityGuard {
-    
+    /*
+     * 
+     */
+    public function filterArgs($inputArgs,$expectedArgs,$expectedTypes=[],$validate=[]){
+        $filteredArray = array_intersect_key($this->request->args,$expectedArgs);
+        return $filteredArray;
+    }
+        
     /*
      * Verify the file is a GIF, JPEG, or PNG using the Exif extension
      */
-    
     public function verifyImageInput(){
         $fileType = exif_imagetype($_FILES["myFile"]["tmp_name"]);
         $allowed = array(IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG);
@@ -109,5 +115,57 @@ class SecurityGuard {
         }else{ 
             return false; 
         } 
+    }
+    
+    function cleanInput($input) {
+
+            $search = array(
+              '@<script[^>]*?>.*?</script>@si',   // Strip out javascript
+              '@<[\/\!]*?[^<>]*?>@si',            // Strip out HTML tags
+              '@<style[^>]*?>.*?</style>@siU',    // Strip style tags properly
+              '@<![\s\S]*?--[ \t\n\r]*>@'         // Strip multi-line comments
+            );
+
+              $output = preg_replace($search, '', $input);
+              return $output;
+        }
+  
+    function sanitize($input) {
+
+        if (is_array($input)) {
+            foreach($input as $var=>$val) {
+                $output[$var] = sanitize($val);
+            }
+        }
+        else {
+            if (get_magic_quotes_gpc()) {
+                $input = stripslashes($input);
+            }
+            $input  = cleanInput($input);
+            $output = mysql_real_escape_string($input);
+        }
+        return $output;
+    }
+
+    function getRemoteIPAddress() {
+        $ip = $_SERVER['REMOTE_ADDR'];
+        return $ip;
+    }
+
+    function getRealIPAddr()
+    {
+        if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
+        {
+            $ip=$_SERVER['HTTP_CLIENT_IP'];
+        }
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
+        {
+            $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+        else
+        {
+            $ip=$_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
     }
 }

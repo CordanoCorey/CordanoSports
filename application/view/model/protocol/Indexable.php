@@ -10,8 +10,9 @@ namespace application\view\model\protocol;
  * @version 1.0
  */
 interface Indexable extends Featurable{
-    public function includeLayout();
-    //public function setBackground();
+    
     public function loadCollection();
-    public function loadView();
+    public function getLayout();
+    public function getBackground();
+    public function getTitle();
 }
