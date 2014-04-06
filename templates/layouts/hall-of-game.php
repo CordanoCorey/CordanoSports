@@ -72,6 +72,8 @@
 
 <script type="text/javascript" src="js/initialize.js"></script>
 
+<script type="text/javascript" src="js/layouts/hall-of-game.php"></script>
+
 </body>
 </html>
 

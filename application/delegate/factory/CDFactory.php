@@ -1,5 +1,5 @@
 <?php
-    namespace application\delegate\factory;
+    namespace application\delegate;
     /*
      * Handles tasks that are delegated in-session and never stores any data, just
      * serves as a collection of utilities that require data input.

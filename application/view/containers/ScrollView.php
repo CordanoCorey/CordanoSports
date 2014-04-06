@@ -19,9 +19,9 @@
         
         public function setContent()
         {
-            $this->scrollerNav = $this->viewModel->navigate("scroller");
-            $this->scrollerContent = $this->viewModel->getScrollerContent();
+            $this->scrollerNav = $this->viewModel->getScrollerMenu();
             $this->scrollerFilters = $this->viewModel->getScrollerFilters();
+            $this->scrollerContent = $this->viewModel->getScrollerCollection();
         }
         
     }

@@ -16,8 +16,8 @@ class DbQuery {
     
     public $selectColumns=[];
     public $fromTable="";
+    public $joinOn=[];
     public $whereRowsMatch=[];
-    public $join=[];
     
     public function selectColumns($queryString){
         

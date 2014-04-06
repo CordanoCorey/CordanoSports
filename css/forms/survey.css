@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 2, 2014, 5:54:59 PM
+    Author     : coreygelbaugh
+*/
+
+.survey {
+	margin:10px 0;
+	overflow:auto;
+        color:#555;
+	font-size:14px;	
+}
+
+.survey h3 {
+	color:#666;
+	font-weight:normal;
+	font-size:18px;
+}
+.survey form input[type=radio] {
+
+}

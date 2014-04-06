@@ -11,6 +11,6 @@ namespace application\view\collections\protocol;
 interface Submittable
 {
     public function setFormFields();
-    public function setFormApplets();
+    public function setFormApps();
     public function onSubmitFormAction();
 }

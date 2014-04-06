@@ -7,8 +7,30 @@
     * @author coreygelbaugh
     * @version 1.0
     */
-    Class HypeMachine
-    {
-        
+    Class HypeMachine implements Indexable,Responsive{
+        /*
+        * 
+        */
+       public function getBackground(){
+           return "bg-signed-in.jpg";
+       }
+       /*
+        * 
+        */
+       public function getTitle(){
+           return "Cordano :: Believe the Hype";
+       }
+       /*
+        * 
+        */
+       public function getLayout(){
+           return "hype-machine.php";
+       }
+       /*
+        * 
+        */
+       public function loadView(){
+           return new AppView($this);
+       }
         
     }

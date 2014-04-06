@@ -72,6 +72,8 @@
 
 <script type="text/javascript" src="js/initialize.js"></script>
 
+<script type="text/javascript" src="js/layouts/in-game.php"></script>
+
 </body>
 </html>
 

@@ -14,7 +14,7 @@
             
             <?php include 'includes/ticker.php'; ?>
             
-                <?php $_SESSION["view"]->render(); ?>
+                <?php $view->render(); ?>
             
             <?php include 'includes/footer.php'; ?>
             
@@ -24,10 +24,8 @@
         
 </body>
 
-<script type="text/javascript">
-    
-    <?php $_SESSION["view"]->observe();?>
-        
-</script> 
+<script type="text/javascript" src="js/initialize.js"></script>
+
+<script type="text/javascript" src="js/layouts/topic-layout.php"></script>
 
 </html>

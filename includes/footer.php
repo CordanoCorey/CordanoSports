@@ -5,7 +5,7 @@
         </div>
             
         <div class="wrapper">
-            <img src="assets/images/SportsData.Combo.png" />
+            <img src="images/logos/SportsData.Combo.png" />
         </div>
     </div>
         

@@ -5,7 +5,6 @@ use \application\model\teams\Team as Team;
 
 use \application\view\model\protocol\Indexable as Indexable;
 use \application\view\containers\protocol\Pageable as Pageable;
-use \application\view\elements\protocol\Collectible as Collectible;
 
 use \application\view\containers\PageView as PageView;
 /**
@@ -15,14 +14,40 @@ use \application\view\containers\PageView as PageView;
  * @author coreygelbaugh
  * @version 1.0
  */
-class TeamView implements Indexable,Pageable,Collectible {
+class TeamView implements Indexable,Pageable {
     
     private $team;
     
     public function __construct(){
         
     }
-    
+    /*
+     * 
+     */
+    public function getBackground(){
+        return "bg-signed-in.jpg";
+    }
+    /*
+     * 
+     */
+    public function getTitle(){
+        return "Cordano :: Believe the Hype";
+    }
+    /*
+     * 
+     */
+    public function getLayout(){
+        return "team-layout.php";
+    }
+    /*
+     * 
+     */
+    public function loadView(){
+        return new PageView($this);
+    }
+    /*
+     * 
+     */
     public function loadCollection($collection=""){
         
         if($collection and in_array($collection,$this->featureContent)){
@@ -33,7 +58,9 @@ class TeamView implements Indexable,Pageable,Collectible {
             $this->collections[] = new $collectionClass($this->team);
         }
     }
-    
+    /*
+     * 
+     */
     public function loadFeature($feature=""){
         
         if($feature and in_array($feature,$this->featureContent)){

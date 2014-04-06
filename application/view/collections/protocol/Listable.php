@@ -10,6 +10,6 @@ namespace application\view\collections\protocol;
 */
 interface Listable
 {
-    public function getListHeading();
+    public function getListSummary();
     public function getListRows();
 }

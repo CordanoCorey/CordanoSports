@@ -1,0 +1,1000 @@
+/* Cordano CSS Styles */
+
+html {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position:center center fixed;
+	background-repeat:no-repeat;
+}
+
+body {
+	margin:0;
+	padding:0;
+}
+
+.container {
+	width:1020px;
+	overflow:auto;
+	margin:0 auto;
+}
+
+.wrapper {
+	margin:0 auto;
+	width:980px;
+	padding:0 20px;
+}
+
+.clear {
+	overflow:auto;
+}
+
+.button,
+ul#home-nav li.sign-in a {
+	padding:7px;
+	background:rgba(0,0,0,0.2);
+	color:#fff;
+	font-family: 'Oswald', sans-serif;
+	font-size:18px;
+	text-shadow:0 0 3px #000;
+	text-decoration:none;
+	text-transform:uppercase;
+	border:1px solid #fff;
+	font-weight:normal;
+	background: #828282; /* Old browsers */
+	background: -moz-linear-gradient(top, #adadac 0%, #afafaf 50%, #828282 51%, #828282 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#adadac), color-stop(50%,#afafaf), color-stop(51%,#828282), color-stop(100%,#828282)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #adadac 0%,#afafaf 50%,#828282 51%,#828282 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #adadac 0%,#afafaf 50%,#828282 51%,#828282 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #adadac 0%,#afafaf 50%,#828282 51%,#828282 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #adadac 0%,#afafaf 50%,#828282 51%,#828282 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#adadac', endColorstr='#828282',GradientType=0 ); /* IE6-9 */
+}
+
+/* HOME STYLES */
+
+.home-spacer {
+	height:20px;	
+}
+
+#home-left  {
+	float:left;
+	width:240px;
+	margin-right:20px;
+	padding-top:10px;	
+}
+
+#home-right {
+	float:left;
+	width:760px;	
+}
+
+.red-wrapper {
+	background:rgba(0,0,0,0.2);
+	border:1px solid #e54055;
+	padding:10px;
+	display:block;	
+	margin-bottom:6px;
+	overflow:auto;
+}
+
+#home-splash {
+	background:url(../images/backgrounds/splash-bg.jpg) no-repeat;
+	height:372px;
+	margin-bottom:6px;
+	position:relative;
+	overflow:auto;
+}
+
+#home-splash .button {
+	position:absolute;
+	bottom:20px;
+	right:20px;	
+}
+
+#home-splash .splash-text {
+	color:#fff;
+	padding:20px;
+}
+
+#home-splash .splash-text h1 {
+	margin:0;
+	font-family: 'Oswald', sans-serif;
+	text-shadow:0 1px 0 #000;
+	font-size:40px;
+	font-weight:normal;
+	text-transform:uppercase;
+}
+#home-splash .splash-text p {
+	font-family:Arial, Helvetica, sans-serif;
+	margin:0;
+	font-size:14px;
+	text-shadow:0 1px 0 #000;
+}
+ul#home-nav {
+	list-style:none;
+	padding:0;
+	margin:20px 0;
+}
+
+ul#home-nav li {
+	text-align:center;
+	margin:5px 0;
+}
+
+ul#home-nav li:first-child {
+	margin-top:0;	
+}
+
+ul#home-nav li a {
+	padding:7px;
+	display:block;
+	background:rgba(0,0,0,0.2);
+	color:#fff;
+	font-family: 'Oswald', sans-serif;
+	font-size:18px;
+	text-shadow:0 0 3px #000;
+	text-decoration:none;
+	text-transform:uppercase;
+	border:1px solid #e54055;
+	font-weight:normal;
+}
+
+.home-feature {
+	overflow:auto;
+}
+
+.home-feature img {
+	float:left;
+	margin-right:20px;
+	width:115px;
+}
+
+.home-feature-copy {
+	float:left;
+	color:#fff;
+	width:600px;
+}
+
+.home-feature h3 {
+	margin:0;
+	font-family: 'Oswald', sans-serif;
+	font-size:20px;
+	text-transform:uppercase;
+	font-weight:normal;
+	line-height:22px;
+}
+
+.home-feature p {
+	margin-top:0;
+	font-family: 'Quicksand', sans-serif;
+	font-size:14px;
+}
+
+.home-feature a {
+	font-size:14px;
+	padding:4px 8px;
+}
+
+/* MAIN STYLES */
+
+#header {
+	background:#dc001c;
+	border-bottom:2px solid #fff;
+	box-shadow:0 5px 10px rgba(0,0,0,0.7);
+	overflow:auto;
+}
+
+.logo {
+	float:left;
+	margin:20px 5% 0 20px;
+}
+
+.fanbot-wrapper {
+	float:left;
+	min-width:320px;	
+}
+
+.fanbot-block {
+	/*float:left;*/
+	background:rgba(0,0,0,0.2);
+	padding:11px 20px;
+	border:1px solid #e54358;
+	margin:6px 0;
+	overflow:auto;
+	/*min-width:320px;*/
+}
+
+.fanbot-block form {
+	float:left;	
+	width:auto;
+}
+
+.fanbot-block .text {
+	float:left;
+	font-family: 'Oswald', sans-serif;
+	color:#fff;
+	font-size:22px;	
+	margin-right:20px;
+}
+
+.fanbot-block input[type=text] {
+	float:left;
+	padding:6px;
+	font-size:18px;
+	color:#666;
+	border:1px solid #fff;
+	-moz-box-shadow:    inset 0 3px 5px #888;
+	-webkit-box-shadow: inset 0 3px 5px #888;
+	box-shadow:         inset 0 3px 5px #888;
+}
+
+.fanbot-block input[type=button] {
+	float:left;
+	background: #646463; /* Old browsers */
+	background: -moz-linear-gradient(top, #646463 0%, #afafaf 50%, #646463 51%, #646463 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#646463), color-stop(50%,#afafaf), color-stop(51%,#646463), color-stop(100%,#646463)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #646463 0%,#afafaf 50%,#646463 51%,#646463 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #646463 0%,#afafaf 50%,#646463 51%,#646463 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #646463 0%,#afafaf 50%,#646463 51%,#646463 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #646463 0%,#afafaf 50%,#646463 51%,#646463 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#646463', endColorstr='#646463',GradientType=0 ); /* IE6-9 */
+	font-family: 'Oswald', sans-serif;
+	font-size:22px;
+	text-shadow:0 0 5px #000;
+	border-top:1px solid #fff;
+	border-right:1px solid #fff;
+	border-bottom:1px solid #fff;
+	border-left:none;
+	color:#fff;
+	height:36px;
+	width:36px;
+	cursor:pointer;
+}
+
+a#profile-block {
+	float:right;
+	background: #353535; /* Old browsers */
+	background: -moz-linear-gradient(top, #353535 0%, #555555 49%, #333333 50%, #333333 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#353535), color-stop(49%,#555555), color-stop(50%,#333333), color-stop(100%,#333333)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #353535 0%,#555555 49%,#333333 50%,#333333 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #353535 0%,#555555 49%,#333333 50%,#333333 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #353535 0%,#555555 49%,#333333 50%,#333333 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #353535 0%,#555555 49%,#333333 50%,#333333 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#353535', endColorstr='#333333',GradientType=0 ); /* IE6-9 */
+	padding:10px;
+	/*border-right:1px solid #fff;
+	border-left:1px solid #fff;*/
+	/*width:250px;*/
+	width:80px;
+	overflow:auto;
+	text-decoration:none;
+	display:block;
+	position:relative;
+	margin-right:20px;
+}
+
+a#profile-block img.thumb {
+	float:left;
+	width:40;
+	height:40;
+	border:1px solid #fff;
+	margin-right:16px;
+}
+
+a#profile-block .username {
+	float:left;
+	font-size:16px;
+	color:#fff;
+	font-family:Arial, Helvetica, sans-serif;
+	margin-top:18px;
+	text-shadow:0 0 3px #000;
+}
+
+a#profile-block .arrow {
+	float:right;
+	width:22px;
+	height:22px;
+	background:url(../images/buttons/arrow-profile-drop.png) no-repeat;
+	position:absolute;
+	right:10px;
+	top:27px;
+}
+
+#profile-settings {
+	background:rgba(0,0,0,0.8);
+	/*width:270px;*/
+	width:200px;
+	position:absolute;
+	right:20px;
+	top:75px;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	z-index:999;
+}
+
+#profile-settings ul {
+	padding-left:10px;
+	list-style:none;
+	font-family:Arial, Helvetica, sans-serif;
+	margin:0;
+	padding:0;
+}
+
+#profile-settings ul li {
+	border-bottom:1px solid #fff;	
+}
+
+#profile-settings ul li:last-child {
+	border:none;	
+}
+
+#profile-settings ul li a {
+	display:block;
+	color:#fff;
+	text-decoration:none;
+	font-size:16px;
+	padding:10px 16px;
+}
+
+#profile-settings ul li a:hover {
+	background:#444;
+}
+
+#sidebar {
+	width:175px;
+	margin:20px;
+	float:left;
+}
+
+ul#sidebar-nav {
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+
+ul#sidebar-nav li {
+	text-align:center;
+	margin:5px 0;
+}
+
+ul#sidebar-nav li:first-child {
+	margin-top:0;	
+}
+
+ul#sidebar-nav li a {
+	padding:7px;
+	display:block;
+	background: #dd021e; /* Old browsers */
+	background: -moz-linear-gradient(top, #dd021e 0%, #fc4f65 50%, #d9001a 51%, #dd021e 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dd021e), color-stop(50%,#fc4f65), color-stop(51%,#d9001a), color-stop(100%,#dd021e)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #dd021e 0%,#fc4f65 50%,#d9001a 51%,#dd021e 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #dd021e 0%,#fc4f65 50%,#d9001a 51%,#dd021e 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #dd021e 0%,#fc4f65 50%,#d9001a 51%,#dd021e 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #dd021e 0%,#fc4f65 50%,#d9001a 51%,#dd021e 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd021e', endColorstr='#dd021e',GradientType=0 ); /* IE6-9 */
+	color:#fff;
+	font-family: 'Oswald', sans-serif;
+	font-size:18px;
+	text-shadow:0 0 3px #000;
+	text-decoration:none;
+	text-transform:uppercase;
+	border:1px solid #fff;
+}
+
+ul#sidebar-nav li a.in-game {
+	background:url(../images/buttons/button-in-game-bg.png) repeat;
+	border:1px solid #ffc600;
+}
+
+ul#sidebar-nav li a.appLink {
+	padding:7px;
+	background:rgba(0,0,0,0.2);
+	color:#fff;
+	font-family: 'Oswald', sans-serif;
+	font-size:18px;
+	text-shadow:0 0 3px #000;
+	text-decoration:none;
+	text-transform:uppercase;
+	border:1px solid #fff;
+	font-weight:normal;
+	background: #828282; /* Old browsers */
+	background: -moz-linear-gradient(top, #adadac 0%, #afafaf 50%, #828282 51%, #828282 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#adadac), color-stop(50%,#afafaf), color-stop(51%,#828282), color-stop(100%,#828282)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #adadac 0%,#afafaf 50%,#828282 51%,#828282 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #adadac 0%,#afafaf 50%,#828282 51%,#828282 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #adadac 0%,#afafaf 50%,#828282 51%,#828282 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #adadac 0%,#afafaf 50%,#828282 51%,#828282 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#adadac', endColorstr='#828282',GradientType=0 ); /* IE6-9 */
+}
+
+#my-apps {
+	background:rgba(0,0,0,0.2);
+	overflow:auto;
+	border:1px solid #888;
+}
+
+#my-apps .titlebar {
+	background:#000;
+	padding:5px;
+}
+
+#my-apps .titlebar .title {
+	color:#fff;
+	font-family: 'Oswald', sans-serif;
+	text-transform:uppercase;
+	display:inline-block;
+}
+#my-apps .apps {
+	margin:10px;	
+}
+
+a.button-add {
+	border:1px solid #fff;
+	float:right;
+	padding:2px 5px;
+	color:#fff;	
+	font-family: 'Oswald', sans-serif;
+	text-transform:uppercase;
+	text-decoration:none;
+	background: #569414; /* Old browsers */
+	background: -moz-linear-gradient(top, #569414 0%, #569414 50%, #2f630c 51%, #2f630c 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#569414), color-stop(50%,#569414), color-stop(51%,#2f630c), color-stop(100%,#2f630c)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #569414 0%,#569414 50%,#2f630c 51%,#2f630c 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #569414 0%,#569414 50%,#2f630c 51%,#2f630c 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #569414 0%,#569414 50%,#2f630c 51%,#2f630c 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #569414 0%,#569414 50%,#2f630c 51%,#2f630c 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#569414', endColorstr='#2f630c',GradientType=0 ); /* IE6-9 */
+	display:inline-block;
+	font-size:12px;
+	text-shadow:0 0 3px #000;
+}
+
+
+
+/* MAIN CONTENT AEREA */
+
+#main {
+	float:left;
+	width:800px;
+	margin:20px 0;
+	position:relative;
+	overflow:auto;
+}
+
+
+
+#ticker { /* the outer div with the black border */
+	background:url(../images/bg-scoreboard.png) repeat #000;
+	padding:10px 0;
+	color:#fff;
+	overflow: hidden;
+	border:1px solid #888;
+	margin:0 0 5px 0;
+}
+
+
+#inventory-nav {
+	border:1px solid #fff;
+	background: #060606; /* Old browsers */
+	background: -moz-linear-gradient(top, #060606 0%, #353434 50%, #000000 51%, #000000 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#060606), color-stop(50%,#353434), color-stop(51%,#000000), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #060606 0%,#353434 50%,#000000 51%,#000000 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #060606 0%,#353434 50%,#000000 51%,#000000 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #060606 0%,#353434 50%,#000000 51%,#000000 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #060606 0%,#353434 50%,#000000 51%,#000000 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#060606', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+	padding:7px;
+	margin:5px 0;
+	overflow:auto;
+}
+
+ul#inventory-categories {
+	padding:0;
+	margin:0;
+	max-width:600px;
+	float:left;
+}
+ul#inventory-categories li {
+	display:inline;
+}
+ul#inventory-categories li:first-child {
+	margin-left:20px;
+}
+ul#inventory-categories li a {
+	display:inline-block;
+	text-decoration:none;
+	color:#fff;
+	font-family: 'Oswald', sans-serif;
+	font-size:18px;
+	padding-right:30px;
+	background:url(../images/buttons/arrow-dropdown.png) no-repeat right;
+	margin-right:20px;
+	text-transform:uppercase;
+}
+a#my-inventory {
+	float:right;
+	text-decoration:none;
+	color:#fff;
+	font-family: 'Oswald', sans-serif;
+	font-size:18px;
+	padding-right:30px;
+	background:url(../images/buttons/arrow-dropdown.png) no-repeat right;
+	margin-right:20px;
+	text-transform:uppercase;
+}
+
+#hype-flyout,
+#leagues-flyout,
+#teams-flyout,
+#players-flyout,
+#games-flyout{
+	background:rgba(0,0,0,0.8);
+	width:758px;
+	position:absolute;
+	left:1px;
+	top:90px;
+	padding:20px;
+	color:#fff;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.content {
+	background:#fff;
+	padding:20px;
+	overflow:auto;	
+}
+
+.left-col {
+	float:left;
+}
+
+.right-col {
+	width:200px;
+	margin-left:20px;
+	float:right;
+}
+
+/* HYPEMACHINE STYLES */
+
+#hypemachine {
+    border: 1px solid #888;
+    font-family:Arial, Helvetica, sans-serif;
+    width: 520px;
+    padding:5px;
+    overflow:auto;
+    margin-bottom:-1px;
+}
+
+#hypemachine .headline {
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:22px;
+	color:#B00016;	
+}
+#hypemachine .source {
+	float:right;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:28px;
+	color:#666;
+}
+
+#hypemachine-content p {
+	color:#333;
+	font-size:12px;	
+}
+
+#hypemachine-content a#comment-count {
+	float:left;
+	font-size:14px;
+	color:#B00015;
+	position:relative;
+	margin-top:20px;
+}
+
+#hypemachine-content a.social-icon {
+	float:right;
+	margin:5px;
+}
+
+.comment-block,
+.survey-block {
+	margin:10px 0;
+	overflow:auto;
+}
+
+.comment-block img.avatar {
+	float:left;
+	margin-right:10px;
+	border:1px solid #888;
+}
+
+.comment-block .user-name {
+	float:left;
+	font-size:12px;
+	color:#B00015;
+	vertical-align:text-bottom;
+	text-decoration:underline;
+	margin-top:10px;
+}
+
+.comment-bubble {
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border:1px solid #888;
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #f7f7f7 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f7f7f7)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ffffff 0%,#f7f7f7 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ffffff 0%,#f7f7f7 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #ffffff 0%,#f7f7f7 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #ffffff 0%,#f7f7f7 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f7f7f7',GradientType=0 ); /* IE6-9 */
+	padding:10px;
+	font-size:12px;
+	margin:10px 0;	
+}
+
+.survey-block h3 {
+	color:#666;
+	font-weight:normal;
+	font-size:18px;
+}
+
+.survey-block {
+	color:#555;
+	font-size:14px;	
+}
+.survey-block form input[type=radio] {
+
+}
+
+
+
+/* INGAME STYLES */
+
+#ingame {
+	background:#fff;
+	border:1px solid #888;
+	padding:20px;
+	margin:40px 0;
+	overflow:auto;
+}
+
+#ingame #team1,
+#ingame #team2 {
+	width:225px;
+	border:1px solid #222;
+	border-bottom:none;
+}
+#ingame #team1 {
+	float:left;
+}
+
+#ingame #team2 {
+	float:right;
+}
+
+#ingame #action {
+	float:left;
+	width:524px;
+	border-top:1px solid #222;
+}
+
+#ingame #action .col-title {
+	text-align:center;	
+}
+
+#ingame .col-title {
+	background:#222;
+	height:40px;
+	color:#fff;
+	padding:10px;
+	font-size:28px;
+	font-family: 'Oswald', sans-serif;
+	overflow:auto;
+	background: #000000; /* Old browsers */
+	background: -moz-linear-gradient(top, #000000 0%, #3f3f3f 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#000000), color-stop(100%,#3f3f3f)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #000000 0%,#3f3f3f 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #000000 0%,#3f3f3f 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #000000 0%,#3f3f3f 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #000000 0%,#3f3f3f 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#3f3f3f',GradientType=0 ); /* IE6-9 */
+}
+
+#ingame .col-title img {
+	margin-right:20px;	
+}
+
+#ingame .roster {
+	height:300px;
+	overflow:scroll;
+}
+
+#ingame #recentplays {
+	height:220px;
+	overflow:scroll;
+}
+
+#ingame ul.roster {
+	margin:0;
+	padding:0;
+	margin-top:1px;
+	list-style:none;
+	font-family:Arial, Helvetica, sans-serif;
+	border-bottom:1px solid #222;
+}
+#ingame ul.roster li {
+	display:block;
+	padding:5px;
+	border-bottom:1px solid #222;
+	overflow:auto;
+}
+#ingame .score {
+	text-align:center;
+	height:130px;
+	position:relative;
+}
+
+#ingame .score h1 {
+	font-family: 'Oswald', sans-serif;
+	font-size:70px;
+	margin: 0;
+}
+
+#ingame .score .roster-title,
+#ingame .recentplays-title,
+#ingame .latestplay-title {
+	color:#fff;
+	font-family: 'Oswald', sans-serif;
+	font-size:18px;
+	text-shadow:0 1px 1px #000;
+	text-align:center;
+	padding:0 5px;
+}
+#ingame .score .roster-title,
+#ingame .recentplays-title {
+	background: #414747; /* Old browsers */
+	background: -moz-linear-gradient(top, #414747 0%, #5c6360 50%, #474747 51%, #565656 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#414747), color-stop(50%,#5c6360), color-stop(51%,#474747), color-stop(100%,#565656)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #414747 0%,#5c6360 50%,#474747 51%,#565656 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #414747 0%,#5c6360 50%,#474747 51%,#565656 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #414747 0%,#5c6360 50%,#474747 51%,#565656 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #414747 0%,#5c6360 50%,#474747 51%,#565656 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#414747', endColorstr='#565656',GradientType=0 ); /* IE6-9 */
+}
+#ingame .latestplay-title {
+	background: #dd021e; /* Old browsers */
+	background: -moz-linear-gradient(top, #dd021e 0%, #fc4f65 50%, #d9001a 51%, #dd021e 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dd021e), color-stop(50%,#fc4f65), color-stop(51%,#d9001a), color-stop(100%,#dd021e)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #dd021e 0%,#fc4f65 50%,#d9001a 51%,#dd021e 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #dd021e 0%,#fc4f65 50%,#d9001a 51%,#dd021e 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #dd021e 0%,#fc4f65 50%,#d9001a 51%,#dd021e 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #dd021e 0%,#fc4f65 50%,#d9001a 51%,#dd021e 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dd021e', endColorstr='#dd021e',GradientType=0 ); /* IE6-9 */
+}
+#ingame .score .roster-title {
+	position:absolute;
+	bottom:0;
+	width:215px;
+}
+
+
+
+#ingame ul.roster li img {
+	float:left;
+	margin-right:10px;
+}	
+#ingame ul.roster a {
+	text-decoration:none;
+	color:#B00016;
+}
+#ingame ul.roster a li {
+	display:block;
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffffff 0%, #f7f7f7 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f7f7f7)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ffffff 0%,#f7f7f7 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ffffff 0%,#f7f7f7 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #ffffff 0%,#f7f7f7 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #ffffff 0%,#f7f7f7 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f7f7f7',GradientType=0 ); /* IE6-9 */
+}
+#ingame ul.roster a li:hover {
+	background:#fff;
+}
+
+#ingame #scoreboard {
+	background:url(../images/bg-scoreboard.png) repeat #000;		
+}
+
+#ingame #game-metrics {
+	color:#fff;
+	font-family: 'Oswald', sans-serif;
+	overflow:auto;
+	height:162px;
+	text-align:center;
+	display: table;
+	margin: 0 auto;
+}
+
+#ingame #game-metrics .clock {
+	text-align:center;
+	width:100%;	
+	font-size:50px;
+}
+#ingame #game-metrics .block {
+	float:left;
+	padding:10px;
+	font-size:12px;
+}
+#ingame #game-metrics .title {
+	font-size:12px;
+	text-align:center;
+}
+#ingame #game-metrics .metric {
+	font-size:40px;
+	text-align:center;
+}
+
+#ingame ul#recentplays, 
+#ingame ul#latestplay {
+	padding:0;
+	margin:0;
+	list-style:none;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+#ingame ul#recentplays li, 
+#ingame ul#latestplay li {
+	border-top: 1px solid #888;
+	border-bottom: 1px solid #888;
+        font-family:Arial, Helvetica, sans-serif;
+	padding:5px;
+	overflow:auto;
+	margin-bottom:-1px;	
+}
+
+#ingame ul#recentplays li {
+	opacity:0.5;
+	filter:alpha(opacity=50); /* For IE8 and earlier */
+}
+
+#ingame ul#recentplays li:hover {
+	opacity:1.0;
+	filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+
+#ingame ul#recentplays li a {
+	text-decoration:none;
+	display:block;	
+}
+
+#ingame img.team-icon {
+	float:left;
+	margin-right:10px;
+	width:40px;
+}
+
+#ingame img.player-avatar {
+	border:1px solid #888;
+	float:left;
+	margin-right:10px;
+}
+
+#ingame ul#recentplays .play-player,
+#ingame ul#latestplay .play-player {
+	float:left;
+	font-size:18px;
+	color:#B00016;	
+}
+
+#ingame ul#recentplays .play-desc,
+#ingame ul#latestplay .play-desc {
+	float:right;
+	font-size:14px;
+	color:#222;
+}
+
+
+/* FOOTER */
+
+#footer {
+	padding:0 0 10px 0;
+	background:#DC001C;
+}
+
+#footer .footer-wrap {
+	background:rgba(0,0,0,0.2);	
+	overflow:auto;
+	border:1px solid #e6465a;
+	padding:20px 0;
+}
+
+.sitemap-block {
+	float:left;
+	width:20%;
+	color:#fff;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.sitemap-block h2 {
+	font-weight:lighter;
+	text-transform:uppercase;
+	font-size:18px;
+	margin-bottom:20px;
+}
+
+.sitemap-block p {
+	margin:7px 0;	
+}
+
+.sitemap-block a,
+.sitemap-block a:visited,
+.sitemap-block a:active {
+	font-size:14px;
+	color:#fff;
+	text-decoration:none;
+}
+
+.sitemap-block a:hover {
+	font-size:14px;
+	color:#000;
+}
+
+/* FORM STYLES */
+
+form {
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+form input[type=text] {
+	width:495px;	
+	border:1px solid #555;
+	padding:10px;
+	font-size:16px;
+	margin:5px 0;
+}
+
+form textarea {
+	border:1px solid #555;
+	padding:10px;
+	font-size:16px;
+	margin:5px 0;
+	width:495px;
+	resize: none;
+	font-family:Arial, Helvetica, sans-serif;
+	min-height:100px;
+}
+
+form input[type=submit] {
+	float:right;
+	padding:5px 8px;
+	border:1px solid #555;
+	text-transform:uppercase;
+	font-size:16px;
+	font-family: 'Oswald', sans-serif;
+	cursor:pointer;
+	background: #e5e5e5; /* Old browsers */
+	background: -moz-linear-gradient(top, #e5e5e5 0%, #ffffff 50%, #e5e5e5 51%, #e5e5e5 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e5e5e5), color-stop(50%,#ffffff), color-stop(51%,#e5e5e5), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #e5e5e5 0%,#ffffff 50%,#e5e5e5 51%,#e5e5e5 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #e5e5e5 0%,#ffffff 50%,#e5e5e5 51%,#e5e5e5 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #e5e5e5 0%,#ffffff 50%,#e5e5e5 51%,#e5e5e5 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #e5e5e5 0%,#ffffff 50%,#e5e5e5 51%,#e5e5e5 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+}
+

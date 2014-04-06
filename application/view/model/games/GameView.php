@@ -26,7 +26,30 @@ class GameView implements Indexable,Pageable,Collectable {
     public function __construct($game,$parent=NULL){
         $this->game = $game;
     }
-    
+    /*
+     * 
+     */
+    public function getBackground(){
+        return "bg-signed-in.jpg";
+    }
+    /*
+     * 
+     */
+    public function getTitle(){
+        return "Cordano :: Believe the Hype";
+    }
+    /*
+     * 
+     */
+    public function getLayout(){
+        return "in-game.php";
+    }
+    /*
+     * 
+     */
+    public function loadView(){
+        return new ModalView($this,"templates/views/containers/in-game-view.php");
+    }
     public function loadCollection($collection=""){
         
         if($collection and in_array($collection,$this->featureContent)){

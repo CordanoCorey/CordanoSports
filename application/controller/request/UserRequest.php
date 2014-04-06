@@ -1,5 +1,5 @@
 <?php
-    namespace application\delegate\input;
+    namespace application\controller\request;
     /*
      * Data object for incoming requests.
      * 
@@ -9,13 +9,13 @@
      */
      Class UserRequest{
          
-        private $idUser;
-        private $idTopic;
-        private $idLeague;
-        private $idTeam;
-        private $idPlayer;
-        private $idGame;
-        private $idHype;
+        public $idUser;
+        public $idTopic;
+        public $idLeague;
+        public $idTeam;
+        public $idPlayer;
+        public $idGame;
+        public $idHype;
         
         public $method="get";
         public $action="";
@@ -48,16 +48,8 @@
         public $responseType;
         
         public function __construct($getRequest=[],$postRequest=[]){
-            foreach($getRequest as $key=>$value){ 
-                if(property_exists(get_class($this),$key)){
-                    $this->$key=$value;
-                }
-                else{
-                    $this->args[$key]=$value;
-                }
-            }
-            if($postRequest){
-                foreach($postRequest as $key=>$value){ 
+            if($getRequest){
+                foreach($getRequest as $key=>$value){ 
                     if(property_exists(get_class($this),$key)){
                         $this->$key=$value;
                     }
@@ -67,10 +59,15 @@
                 }
             }
             
-            $this->method = $_SERVER['REQUEST_METHOD'];
-            
-            if($this->isMobile){
-                $this->format = "json";
+            if($postRequest){
+                foreach($postRequest as $key=>$value){ 
+                    if(property_exists(get_class($this),$key)){
+                        $this->$key=$value;
+                    }
+                    else{
+                        $this->args[$key]=$value;
+                    }
+                }
             }
         }
         

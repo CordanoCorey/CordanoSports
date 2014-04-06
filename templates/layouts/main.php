@@ -5,7 +5,7 @@
 <div class="container">
     <div id="home-left">
     	<div>
-        	<img src="assets/images/cordano-logo-index.png" />
+            <img src="images/logos/cordano-logo-index.png" />
         </div>
         <ul id="home-nav">
         	<li class="sign-in"><a href="#">Sign in/Create account</a></li>
@@ -30,7 +30,7 @@
         </div>
         <div class="red-wrapper">
 			<div class="home-feature">
-            	<img src="assets/images/feature-placeholder.jpg" />
+            	<img src="images/placeholders/feature-placeholder.jpg" />
                 <div class="home-feature-copy">
                 	<h3>Feature Title</h3>
                     <p>#Knickstape</p>
@@ -40,7 +40,7 @@
         </div>
         <div class="red-wrapper">
             <div class="home-feature">
-            	<img src="assets/images/feature-placeholder.jpg" />
+            	<img src="images/placeholders/feature-placeholder.jpg" />
                 <div class="home-feature-copy">
                 	<h3>Feature Title</h3>
                     <p>Hey grandma and grandpa!</p>
@@ -50,7 +50,7 @@
         </div>
         <div class="red-wrapper">
 			<div class="home-feature">
-            	<img src="assets/images/feature-placeholder.jpg" />
+            	<img src="images/placeholders/feature-placeholder.jpg" />
                 <div class="home-feature-copy">
                 	<h3>Feature Title</h3>
                     <p></p>
@@ -63,6 +63,8 @@
 
 <?php include 'includes/footer.php'; ?>
 
-<script type="text/javascript" src="assets/js/initialize.js"></script>
+<script type="text/javascript" src="js/initialize.js"></script>
+
+<!--<script type="text/javascript" src="js/layouts/main.php"></script>-->
 
 </body>

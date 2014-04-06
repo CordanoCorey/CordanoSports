@@ -8,7 +8,7 @@ namespace application\view\containers\protocol;
  * @version 1.0
  * 
  */
-interface Collective extends Cellular,Listable,Tabular{
-    public function setCaseNames();
-    public function setCaseContent();
+interface Collective extends Listable,Tabular{
+    public function getCaseNames();
+    public function getCaseContent();
 }

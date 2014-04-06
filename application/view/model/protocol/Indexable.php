@@ -10,7 +10,7 @@ namespace application\view\model\protocol;
  * @version 1.0
  */
 interface Indexable extends Featurable{
-    
+  
     public function loadCollection();
     public function getLayout();
     public function getBackground();

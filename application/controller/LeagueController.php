@@ -47,4 +47,9 @@
                 $this->domainState = new LeaguesCollection($this->idUser);
             }
         }
+        
+        
+        public function createLeague($args){
+            
+        }
     }

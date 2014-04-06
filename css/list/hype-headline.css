@@ -1,0 +1,18 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 2, 2014, 5:39:44 PM
+    Author     : coreygelbaugh
+*/
+
+.hype-headline {
+    border: 1px solid #888;
+    font-family:Arial, Helvetica, sans-serif;
+    width: 520px;
+    padding:5px;
+    overflow:auto;
+    margin-bottom:-1px;
+}

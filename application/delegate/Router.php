@@ -1,6 +1,6 @@
 <?php
-    namespace application\delegate\input;
-    use application\controller\request\UserRequest as UserRequest;
+    namespace application\delegate;
+    use \application\controller\request\UserRequest as UserRequest;
     
     /*
      * The Router class takes a get request and a post request, instantiates a new UserRequest object, 
@@ -15,10 +15,6 @@
          * @param string
          */
         public $requestController="";
-        /*
-         * @param ClientRequest
-         */
-        private $request;
         /*
          * @param string
          */
@@ -43,21 +39,9 @@
          */
         public function inputRequest($getRequest,$postRequest=NULL,$file=NULL){
 
-            if($getRequest["controller"]){
-                $this->reController = ucfirst($getRequest["controller"])."Controller";
-            }
-
-            $this->request = new ClientRequest($getRequest,$postRequest);
+            return new UserRequest($getRequest,$postRequest,$file);
         }
-       /*
-        * Load the correct controller for processing the request.
-        * 
-        * @return CDController
-        */
-        public function routeRequest()
-        {
-             return new $this->requestController($this->request);
-        }
+       
         
         /*
          * Parse the request url string.
@@ -78,16 +62,18 @@
             
             //find the name of the controller in the url
             $urlElements = $this->getUrlElements();
-            if(isset($urlElements[0])){
+            
+            if($urlElements[0]){
                 $controllerName = $urlElements[0];
             }
             else{
                 $controllerName = "CDController";
             }
             
+            $controllerName = "CDController";
+            
             //set the complete controller namespace name
             $this->requestController = $namespace.$controllerName;
-            
         }
         
         public function getUserAgent(){

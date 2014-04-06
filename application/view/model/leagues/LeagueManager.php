@@ -9,6 +9,29 @@ namespace application\view\model\leagues\manager;
  * @author coreygelbaugh
  * @version 1.0
  */
-class LeagueManager {
-    //put your code here
+class LeagueManager implements Indexable,Responsive{
+    /*
+     * 
+     */
+    public function getBackground(){
+        return "bg-signed-in.jpg";
+    }
+    /*
+     * 
+     */
+    public function getTitle(){
+        return "Cordano :: Believe the Hype";
+    }
+    /*
+     * 
+     */
+    public function getLayout(){
+        return "league-manager.php";
+    }
+    /*
+     * 
+     */
+    public function loadView(){
+        return new AppView($this);
+    }
 }

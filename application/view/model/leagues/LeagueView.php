@@ -5,7 +5,6 @@ use \application\model\leagues\league as League;
 
 use \application\view\model\protocol\Indexable as Indexable;
 use \application\view\containers\protocol\Pageable as Pageable;
-use \application\view\elements\protocol\Collectible as Collectible;
 
 use \application\view\containers\PageView as PageView;
 /**
@@ -33,7 +32,30 @@ class LeagueView implements Indexable,Pageable {
             $this->features[] = new $featureClass($this->league);
         }
     }
-    
+    /*
+     * 
+     */
+    public function getBackground(){
+        return "bg-signed-in.jpg";
+    }
+    /*
+     * 
+     */
+    public function getTitle(){
+        return "Cordano :: Believe the Hype";
+    }
+    /*
+     * 
+     */
+    public function getLayout(){
+        return "league-layout.php";
+    }
+    /*
+     * 
+     */
+    public function loadView(){
+        return new PageView($this);
+    }
     public function loadFeature($feature=""){
         
         if($feature and in_array($feature,$this->featureContent)){
@@ -44,13 +66,6 @@ class LeagueView implements Indexable,Pageable {
             
         }
     }
-    
-    
-    
-    public function loadView(){
-        
-    }
-    
     public function includeLayout(){
         
     }

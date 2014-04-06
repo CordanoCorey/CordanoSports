@@ -6,7 +6,6 @@ use \application\model\players\Player as Player;
 
 use \application\view\model\protocol\Indexable as Indexable;
 use \application\view\containers\protocol\Pageable as Pageable;
-use \application\view\elements\protocol\Collectible as Collectible;
 
 use \application\view\containers\PageView as PageView;
 
@@ -35,10 +34,6 @@ class PlayerView implements Indexable,Pageable {
      * @param array
      */
     public $fields=[];
-    /*
-     * @param HypeView[]
-     */
-    protected $hypeView;
     
     
     
@@ -47,8 +42,9 @@ class PlayerView implements Indexable,Pageable {
     /*
      * 
      */
-    public function __construct($player,$collections=[]){
+    public function __construct($player,$context){
         $this->player = $player;
+        $this->context = $context;
     }
     /*
      * 
@@ -70,15 +66,20 @@ class PlayerView implements Indexable,Pageable {
     }
     /*
      * 
+     * 
+     * @param $window Object describing the frame the view has to display itself
      */
-    public function loadView(){
-        return new PageView($this,"templates/views/containers/player-page.php");
+    public function loadView($window){
+        return new PageView($this,$window);
     }
     /*
-     * 
+     * Set display fields.
      */
     public function deriveFields(){
         
+        foreach($values as $field => $value){
+            $this->fields[$field] = $value;
+        }
     }
     /*
      * 
@@ -111,22 +112,14 @@ class PlayerView implements Indexable,Pageable {
         }
     }
     
-    /*
-     * Set display fields.
-     */
-    public function deriveFields(){
-        
-        foreach($values as $field => $value){
-            $this->fields[$field] = $value;
-        }
-    }
+    
    
     
     
     /*
      * 
      */
-    public function getPageLabels(){
+    public function getPageLabels($window){
         
         //the number of pages will be the number of collections that are loaded adding one for the player frontpage
         return count($this->collections) + 1;
@@ -134,21 +127,21 @@ class PlayerView implements Indexable,Pageable {
     /*
      * 
      */
-    public function getPageInventory(){
+    public function getPageInventory($window){
         
         
     }
     /*
      * 
      */
-    public function getPageFeatures(){
+    public function getPageFeatures($window){
         
         
     }
     /*
      * 
      */
-    public function getPageContent($pageId){
+    public function getPageContent($pageId,$window){
         
         switch($pageId){
             case "player":

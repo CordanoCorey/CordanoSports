@@ -47,32 +47,10 @@
                 $this->domainState = new GamesCollection($this->idUser);
             }
         }
-        private function getGameInfo(){
-            $gameInfo=[];
-            $gameInfo["idGame"] = $this->drCordano->request["idGame"];
-            $gameInfo["venue"] = $this->drCordano->request["args"]->venue;
-            $gameInfo["startTime"] = $this->drCordano->request["args"]->startTime;
-            return ($gameInfo);
-        }
         
-        public function index(){
-            
-        }
         
-        public function view(){
-            
-        }
         
-        private function interact($idGame,$action){
-            $game=new Game($idGame);
-            $game->$action($idUser);
-        }
-        
-        private function manage($game){
-            
-        }
-        
-        private function create($gameInfo){
+        private function createGame($args){
             
         }
     }

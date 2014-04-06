@@ -12,9 +12,9 @@ class Game implements Axiomatic,Contextual,Featurable{
     use DbCxn;
     use Properties;
     
-    public function __construct($gameInfo=[]){
+    public function __construct($idGame,$context){
         
-        $this->updateInfo($gameInfo);
+        $this->context = $context;
     }
     
     public function create(){

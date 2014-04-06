@@ -9,8 +9,12 @@
      * @version 1.0
      * @author coreygelbaugh
      */
-    Class SplitView extends CDView
-    {
+    Class SplitView extends CDView{
         
+        public function setContent()
+        {
+            $this->scrollerNav = $this->viewModel->getScrollerMenu();
+            $this->scrollerFilters = $this->viewModel->getScrollerFilters();
+            $this->scrollerContent = $this->viewModel->getScrollerCollection();
+        }
     }
-?>

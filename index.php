@@ -12,17 +12,14 @@
         include_once( $classPath . DIRECTORY_SEPARATOR . $classPI[ 'filename' ] . '.php' );
       });
     
-    //load app delegate
+    //load app delegate to represent the current state of the app
     $delegate = new CDDelegate();
     
-    //format client request
-    $delegate->inputRequest();
-    
     //load correct controller
-    $controller = $delegate->routeRequest();
+    $controllerName = $delegate->routeRequest();
     
-    //pass control off to controller but allow global access to delegate
-    $_SESSION["delegate"]=$delegate;
+    //pass control off to controller
+    $controller = new $controllerName($delegate);
     
     //update domain state if necessary
     $controller->invoke();

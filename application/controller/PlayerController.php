@@ -46,25 +46,9 @@
                 $this->domainState = new PlayersCollection($this->idUser);
             }
         }
-        /*
-         * 
-         */
-        private function manage(){
+        
+        
+        public function createPlayer($args){
             
-            $manager = new Manager($this->user,$this->domainState);
-            if($this->request->role){
-                $manager->setRole($this->request->role);
-            }
-            return $manager;
-        }
-        /*
-         * 
-         */
-        private function search(){
-            
-            
-            $collection = new Collection($this->user);
-            $collection->setCriteria($this->request->args);
-            $this->professor->search($collection);
         }
     }

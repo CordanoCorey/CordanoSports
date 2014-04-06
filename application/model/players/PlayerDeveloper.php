@@ -3,22 +3,11 @@
     /*
      * Edit and manage player accounts.
      * 
-     * @Package Players
-     * @Version 1.0
-     * @Author Corey Gelbaugh
+     * @package players
+     * @version 1.0
+     * @author coreygelbaugh
      */
-    Class PlayerDeveloper extends Player implements \Managerial,\Noteable
+    Class PlayerDeveloper
     {
-        /*
-         * Add a new player to the database.
-         * 
-         * @Param
-         * @Return
-         * @Throws
-         */
-        private function bookmark()
-        {
-            
-        }
+        private $player;
     }
-?>

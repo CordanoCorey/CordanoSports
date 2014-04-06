@@ -1,5 +1,5 @@
 <?php
-namespace application\model\elements;
+namespace application\model\main;
 
 /**
  * 
@@ -26,6 +26,21 @@ class User implements Axiomatic,Contextual,Featurable{
      */
     public function reload($dbQuery){
         $query = "";
+    }
+    
+    public function updateUserNetwork($idUser2,$status){
+        
+        $query = "INSERT INTO usernetwork (idUser1,idUser2,status) "
+                . "VALUES ($this->idUser,$idUser2,'$status')"
+                . "ON DUPLICATE KEY UPDATE status='$status'";
+    }
+    
+    public function createUser($displayName,$sports=[]){
+        
+        $query = "INSERT INTO topic (displayName,status) "
+                . "VALUES ($displayName,$status)";
+        
+        $this->executeQuery($query);
     }
     
     public function getTopic($topic,$args=[]){

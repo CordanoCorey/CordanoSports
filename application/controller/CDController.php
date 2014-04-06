@@ -1,17 +1,16 @@
 <?php
     namespace application\controller;
     use application\professor\DrCordano as DrCordano;
+    use application\professor\Information as Information;
     
     use application\model\main\User as User;
     
     use application\model\protocol\Axiomatic as Axiomatic;
     use application\model\protocol\Administrative as Administrative;
-    use application\model\protocol\Filterable as Filterable;
     
     
     use application\view\model\main\UserView as ElementView;
     use application\view\model\main\AccountManager as ManagerView;
-    use application\view\model\main\UsersView as CollectionView;
     use application\view\model\main\FanbotView as FanbotView;
     
     
@@ -34,39 +33,51 @@
     Class CDController
     {
         /*
-         * @param CDDelegate
+         * @param UserRequest
          */
-        public $delegate;
-        /*
-         * @param User|AccountManager
-         */
-        protected $user;
+        protected $request;
         /*
          * @param Axiomatic
          */
-        protected $domainState;
+        protected $dbState;
         /*
          * @param Deployable
          */
         protected $appState;
-        /*
-         * @param ClientRequest
-         */
-        protected $request;
+        
                 
-                
+               
         /*
          * @param application\library\data\ClientRequest $request
          */
-        public function __construct($request,$delegate)
+        public function __construct($delegate)
         {
-            $this->request = $request;
-            $this->delegate = $delegate;
+            //get info about the request that the controller needs to know
+            $this->request = $delegate->getRequest();
             
+            //the delegate represents the current app state
+            $this->appState = $delegate;
+            
+            //load new professor object to represent db state
+            $this->dbState = new DrCordano($this->getInfo);
+            
+            //if there if a user, load new user object to represent db state
             if($this->request->idUser){
-                $this->user = new User($this->request->idUser);
+                $this->dbState = new User($this->request->idUser,$this->dbState);
             }
         }
+        
+        /*
+         * Acquire all database relevant information from this request in order to start
+         * building the database query.
+         * 
+         * @return Information
+         */
+        protected function getInfo(){
+            
+            return new Information($this->request);
+        }
+        
         /*
          * Invoke the model, then call the request action to update the domain state.
          */
@@ -77,11 +88,10 @@
                 
                 //set request parameters
                 $action = $this->request->action;
-                $args = $this->request->args;
                 
                 //check whether this is a valid request action
                 if(method_exists($this,$action)){ 
-                    $this->$action($args);
+                    $this->$action();
                 }
             }
         }
@@ -93,22 +103,19 @@
             
             //load view model for get requests
             if($this->request->method == "get"){
+                
                 if($this->domainState instanceof Axiomatic){
                     
-                    $this->appState = new ElementView($this->domainState);
-                }
-                elseif($this->domainState instanceof Filterable){
-                    
-                    $this->appState = new CollectionView($this->domainState);
+                    $this->appState = new ElementView($this->domainState,$this->appState);
                 }
                 elseif($this->domainState instanceof Administrative){
                     
-                    $this->appState = new ManagerView($this->domainState);
+                    $this->appState = new ManagerView($this->domainState,$this->appState);
                 }
                 else{
-                    $this->appState = new FanbotView($this->domainState);
+                    $this->appState = new FanbotView($this->domainState,$this->appState);
                 }
-                
+            }
                 //load collections if necessary
                 if($this->request->collection){
                     $this->appState = $this->appState->loadCollection($this->request->collection);
@@ -118,7 +125,6 @@
                 if($this->request->feature){
                     $this->appState = $this->appState->loadFeature($this->request->feature);
                 }
-            }
         }
         
         /*
@@ -143,24 +149,26 @@
         protected function index($format="html"){
             
             //set page background 
-            $_SESSION["background"] = "assets/images/backgrounds/".$this->appState->getBackground();
+            $_SESSION["background"] = "images/backgrounds/".$this->appState->getBackground();
             
             //set page title 
             $_SESSION["title"] = $this->appState->getTitle();
             
             //Load initial view which in turn loads all its subviews
-            $view = $this->appState->loadView();
+            //$view = $this->appState->loadView();
             
             if($format == "json"){
                 json_encode($this->appState);
             }
             else{
+                
                 //include the page layout
-                include "templates/layouts/".$this->appState->getLayout();
+                $layout = $this->appState->getLayout();
+                $_SESSION["layout"] = $layout;
+                $view = $this->appState->loadView();
+                
+                include_once "templates/layouts/".$layout.".php";
             }
-            
-            //prevent further echo statements
-            exit;
         }
         
         /*
@@ -205,15 +213,19 @@
                 $this->appState = new $sender($this->domainState);
             }
         }
-        
+        /*
+         * 
+         */
         protected function search(){
             
             $expectedArgs = ['topic','info','inputString'];
-            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
+            $args = $this->filterArgs($expectedArgs,$this->request->args);
             
-            $this->professor->search($collection,$searchString,$info);
+            $this->professor->search($args["collection"],$args["searchString"],$args["info"]);
         }
-        
+        /*
+         * 
+         */
         protected function autoComplete(){
             
             $this->search();
@@ -225,38 +237,43 @@
             
             $this->hypeMachine->promptUser();
         }
-        
-        protected function getAnswer($args=[]){
+        /*
+         * 
+         */
+        protected function getAnswer(){
             
-            $searchString=isset($args["searchString"])? $args["searchString"]:"";
-            $info=isset($args["info"])? $args["info"]:NULL;
+            $expectedArgs = ['searchString','info'];
+            $args = $this->filterArgs($expectedArgs,$this->request->args);
             
-            $this->fanbot->getAnswer($searchString,$info);
+            $this->professor->search($args["searchString"],$args["info"]);
+        }
+        /*
+         * 
+         */
+        protected function postLogin(){
+            
+            $expectedArgs=['login','password'];
+            $args = $this->filterArgs($expectedArgs,$this->request->args);
+            
+            
+            $this->accountManager->postLogin($login,$password);
         }
         
-        protected function postLogin($args=[]){
+        /*
+         * 
+         */
+        private function create(){
             
-            $userName=isset($args["userName"])? $args["userName"]:"";
-            $password=isset($args["password"])? $args["password"]:NULL;
-            
-            $this->accountManager->postLogin($userName,$password);
-        }
-        
-        
-        private function createUser($args=[]){
-            
-            $userName=isset($args["userName"])? $args["userName"]:"";
-            $password=isset($args["password"])? $args["password"]:NULL;
-            $email=$password=isset($args["password"])? $args["password"]:NULL;
+            $expectedArgs = ['userName','password','email','userName','password','dob'];
             
         }
         /*
          * 
          */
-        public function followUser(){
+        public function follow(){
             
             $expectedArgs = ['idHype'];
-            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
+            $args = $this->filterArgs($expectedArgs,$this->request->args);
             
             $this->user->favorite($args["idUser"]);
         }
@@ -266,7 +283,7 @@
         public function followTopic(){
             
             $expectedArgs = ['idTopic'];
-            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
+            $args = $this->filterArgs($expectedArgs,$this->request->args);
             
             $this->user->favorite($args["idTopic"]);
         }
@@ -275,41 +292,68 @@
          */
         public function favoriteHype(){
             
-            $expectedArgs = ['idHype','info','inputString'];
-            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
+            $expectedArgs = ['idHype'];
+            $args = $this->filterArgs($expectedArgs,$this->request->args);
             
             $this->user->favorite($args["idHype"]);
         }
         
+        /*
+         * 
+         */
+        public function publishHype(){
+            
+            $expectedArgs = ['idHype','folder'];
+            $args = $this->filterArgs($expectedArgs,$this->request->args);
+            
+            $this->user->favorite($args["idHype"]);
+        }
+        /*
+         * 
+         */
+        public function reviewHype(){
+            
+        }
+        /*
+         * 
+         */
         public function updateMyFandom(){
             
             $expectedArgs=['sports','leagues','teams','players','statusChange'];
-            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
+            $args = $this->filterArgs($expectedArgs,$this->request->args);
             
             $this->accountManager->updateMyFandom();
         }
-        
+        /*
+         * 
+         */
         public function updateMyFantasy(){
             
             $expectedArgs=['sports','leagues','teams','players','statusChange'];
-            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
+            $args = $this->filterArgs($expectedArgs,$this->request->args);
             
             $this->accountManager->updateMyFantasy();
         }
-        
+        /*
+         * 
+         */
         public function updateMyLifestyle(){
             
             $expectedArgs=['hobbies','statusChange'];
-            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
+            $args = $this->filterArgs($expectedArgs,$this->request->args);
             
             $this->accountManager->updateMyLifestyle();
         }
-        
+        /*
+         * 
+         */
         public function validateUserInput(){
             
             $expectedArgs = ['inputField','inputValue'];
-            $args = $this->delegate->filterArgs($expectedArgs,$this->request->args);
+            $args = $this->filterArgs($expectedArgs,$this->request->args);
             
             $this->accountManager->validate($args["inputField"],$args["inputValue"]);
         }
+        
+        
     }
